@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pixel Art Maker!</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--Fonts and Icons-->
+    <link href="https://fonts.googleapis.com/css?family=Quicksand|Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+
+    <!--CSS-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Monoton">
+    <link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+    <div class="container">
+        <header>
+            <div class="headerWrapper">
+                <img class="logo" src="\images\logo svg.svg" href="logo">
+                <div></div>
+                <h2 class="appName">Pixel Art Maker</h2>
+            </div>
+        </header>
+
+        <div id="introPage">
+            <div class="introTitle">
+                <h1 class="titleFirst"><sub>[re-] </sub>creating</h1>
+                <h1 class="titleSecond">art</h1>
+                <div class="titleThird">
+                    <h1>one</h1>
+                    <h1>square<br>at the<br>time</h1>
+                </div>
+            </div>
+            <video width="auto" height="auto" autoplay loop>
+        <source src="\images\monalisa vid.mp4"> Your browser does not support the video tag.
+      </video>
+        </div>
+
+        <div id="gameSetUp">
+            <div class="headerInst">
+                <button id="instButton" data-toggle="dropdown">
+          <h2>Instructions</h2>
+          <i class="material-icons">&#xE313;</i>
+        </button>
+            </div>
+
+            <div class="instructions dropdown">
+
+                <div class="instWrapper">
+                    <div class="stepOne">
+                        <img class="stepOneIcon" src="\images\step1-png.png" href="step one">
+                        <p>Define the dimensions for your canvas</p>
+                        <p>To begin; create your canvas. Make it long and high any number of pixels between 5 and 50! </p>
+
+                    </div>
+                    <div class="stepTwo">
+                        <p>PICK THE COLOR TO START WITH.</p>
+                        <p>Choose your color to begin with painting. Your recent colors will be saved in swatches. All of that you can find in the color menu!</p>
+                        <img class="stepTwoIcon" src="\images\step2-png.png" href="step two">
+
+                    </div>
+                    <div class="stepThree">
+                        <img class="stepThreeIcon" src="\images\step3-png.png" href="step three">
+                        <p>Let your creativity kick in!</p>
+                        <p>To draw, simply drag your mouse in strokes. If you make a mistake; no fear - double click on a pixel, or stroke while holding right-mouse-button should do the trick!</p>
+                        <p>You can adjust your canvas' grid size; change its background color and see it with or without grid lines.</p>
+
+                    </div>
+                    <div class="stepFour">
+                        <p>SAVE YOUR MASTERPIECE!</p>
+                        <p>If you like what you've created, save your <span>masterpiece</span>, so you can show it off. If not - oh well, just scrape it! And don't worry - artists are usually their own worst critics! </p>
+                        <img class="stepFourIcon" src="\images\step4-png.png" href="step three">
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="canvasSetUp">
+
+            <div class="headerCanvasSetup">
+                <button id="canvasButton" data-toggle="dropdown">
+          <h2>Let's draw!</h2>
+                   
+          </button>
+            </div>
+
+            <div class="canSetUp dropdown1">
+                <div class="canSetUpWrapper">
+                    <div class="canvasMenu">
+                        <button id="canvasMenuButton">
+          <img class="canvasIcon" src="\images\icon-canvas-png.png" href="canvas icon">
+          <i class="material-icons">&#xE313;</i>
+        </button>
+                    </div>
+
+
+                    <div class="sizePickerMenu">
+                        <form id="sizePicker">
+                            <h2>Set up your canvas</h2>
+
+                            <div class="pickHeight">
+                                <h3>HEIGHT</h3>
+                                <input type="number" id="canvasHeight" name="height" min="5" max="50" value="10">
+                                <img class="xIcon" src="" href="canvas icon">
+                            </div>
+                            <div class="pickWidth">
+                                <h3>WIDTH</h3>
+                                <input type="number" id="canvasWidth" name="width" min="5" max="50" value="10">
+                            </div>
+
+                            <input type="submit" id="submitButton" value="Make your canvas!">
+                        </form>
+                    </div>
+                    <div class="colorMenu">
+                        <button id="colorMenuButton">
+          <img class="colorIcon" src="\images\icon-color-png.png" href="color icon">
+          <i class="material-icons">&#xE313;</i>
+        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="game">
+
+            <div class="barLeft bar barHiddenL">
+                <div class="slot slotA">
+                    <button id="drawButton">
+                    <i class="material-icons">brush</i>
+                             </button>
+                    <div class="tooltip hiddenD">
+                        <span class="tooltiptext">Draw</span>
+                    </div>
+                </div>
+                <div class="slot slotA">
+                    <button id="eraserButton">
+                        <i class="fa fa-eraser" aria-hidden="true"></i>
+                                        </button>
+                    <div class="tooltip hiddenE">
+                        <span class="tooltiptext">Erase</span>
+                    </div>
+                </div>
+                <div class="slot slotB">
+                    <button id="paintCanvas">
+                <i class="material-icons">format_color_fill</i>
+                </button>
+
+                    <div class="tooltip  hiddenPC">
+                        <span class="tooltiptext">Paint canvas</span>
+                    </div>
+                </div>
+                <div class="cellSize slot slotA">
+                    <span class="cellS square"></span>
+                    <span class="cellM square"></span>
+                    <span class="cellL square"></span>
+
+                    <div class="tooltip  hiddenCS">
+                        <span class="tooltiptext">Pick cell size</span>
+
+                    </div>
+                </div>
+                <div class="slot slotA ">
+                    <button id="clearButton">
+                    <i class="fa fa-window-close" aria-hidden="true"></i>
+                    </button>
+                    <div class="tooltip  hiddenBkgC">
+                        <span class="tooltiptext">Clear canvas</span>
+                    </div>
+                </div>
+
+                <div class="slot slotA">
+                    <button id="canvasBkgColor">
+                    <i class="material-icons">view_comfy</i>
+                </button>
+                    <div class="tooltip hiddenCC">
+                        <span class="tooltiptext">change <br> background color of your canvas</span>
+                    </div>
+                </div>
+                <div class="slot slotB">
+                    <button id="toggleLinesButton">
+                    <i class="fa fa-hashtag" aria-hidden="true"></i>
+                    </button>
+                    <div class="tooltip  hiddenTL">
+                        <span class="tooltiptext">Grid lines ON/OFF</span>
+                    </div>
+                </div>
+                <div class="slot slotA ">
+                    <button id="deleteCanvasButton">
+                    <i class="material-icons">delete</i>
+                                     </button>
+                    <div class="tooltip  hiddenDel">
+                        <span class="tooltiptext">Delete canvas</span>
+
+                    </div>
+                </div>
+
+                <div class="slot">
+                    <button id="downloadButton">
+                    <i class="material-icons">file_download</i>
+                                  </button>
+                    <div class="tooltip">
+                        <span class="tooltiptext  hiddenDown">Download</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="canvasWrapper">
+                <div class="printableCanvas">
+                    <table id="pixelCanvas"></table>
+                </div>
+            </div>
+
+            <div class="barRight bar barHiddenR">
+                <div class="slot slotB">
+                    <h3>Pick A Color</h3>
+                    <input type="color" id="colorPicker">
+                </div>
+                <div class="slot slotB">
+                    <h3>Swatches</h3>
+                    <div class="swatches"></div>
+                </div>
+                <div class="slot swatch slotA"></div>
+            </div>
+        </div>
+
+
+
+
+
+        <footer id="footer">
+            <p>Made for Udacity Google challenge: Front End Developer</p>
+            <p>Ozana Buljan</p>
+            <p>Jan-2018</p>
+        </footer>
+    </div>
+    <!--jQuery, HTML2Canvas, JS-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script type="text/javascript" src="html2canvas-master/dist/html2canvas.js"></script>
+    <script src="designs.js"></script>
+</body>
+
+</html>

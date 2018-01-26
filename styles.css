@@ -1,0 +1,629 @@
+/********/
+
+/*CSS*/
+
+/********/
+
+/*--general styling--*/
+
+html {}
+
+body {
+    margin: 0;
+    padding: 0;
+    background-color: #566270;
+}
+
+h1 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: xx-large;
+    font-weight: 200;
+    letter-spacing: 4px;
+    color: #e8e9e1;
+    text-shadow: 1px 2px 1px #48484c;
+}
+
+h2 {
+    font-family: 'Quicksand', sans-serif;
+    font-size: x-large;
+    font-weight: 200;
+    letter-spacing: 4px;
+    color: #c7dc65;
+    text-shadow: 1px 2px 2px #48484c;
+    text-transform: lowercase;
+}
+
+h3 {
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #e8e9e1;
+}
+
+p,
+span {
+    font-family: 'Roboto', sans-serif;
+    font-size: small;
+    font-weight: 200;
+    letter-spacing: 2px;
+    color: #e8e9e1;
+}
+
+input,
+button {
+    background: none;
+    border: none;
+    font-size: 1em;
+    color: grey;
+    cursor: pointer;
+}
+
+i {
+    font-size: xx-large;
+    color: #e8e9e1;
+}
+
+/*---responsive grid layout---*/
+
+.container {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: minmax(100px, auto);
+    grid-template-areas: "hd" "iP" "hI" "hCS" "cSU" "ft";
+}
+
+header {
+    grid-area: hd;
+}
+
+#introPage {
+    grid-area: iP;
+}
+
+.headerInst {
+    grid-area: hI;
+}
+
+.headerCanvasSetup {
+    grid-area: hCS;
+}
+
+.canSetUp {
+    grid-area: cSU;
+}
+
+footer {
+    grid-area: ft;
+    background-color: #c54d57;
+    box-shadow: 2px 4px 10px #48484c;
+}
+
+/*---header---*/
+
+header {
+
+    background-color: #c54d57;
+    box-shadow: 2px 4px 10px #48484c;
+}
+
+.headerWrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+}
+
+.logo {
+    grid-column: 1/2;
+    justify-self: start;
+    align-self: center;
+}
+
+.appName {
+    grid-column: 3/4;
+    justify-self: end;
+    align-self: center;
+    font-size: xx-large;
+    margin: 1em;
+}
+
+
+/*---intro page---*/
+
+#introPage {
+    display: grid;
+    background-attachment: fixed;
+    background-color: #566270;
+}
+
+.introTitle {
+    grid-column: 1/2;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    margin: 4em 0 4em 4em;
+    justify-content: center;
+}
+
+.titleFirst {
+    grid-column: 1/4;
+    grid-row: 1/2;
+    justify-self: start;
+    align-self: end;
+    font-weight: 800;
+    font-size: 2em;
+    letter-spacing: 6px;
+}
+
+.titleFirst > sub {
+    font-weight: 200;
+    color: #59c3be;
+    letter-spacing: 0px;
+    font-size: 0.75em;
+}
+
+.titleSecond {
+    grid-column: 1/2;
+    grid-row: 2/3;
+    font-size: 6em;
+    margin: 0;
+    padding: 0;
+    font-weight: 100;
+    letter-spacing: 6px;
+    line-height: 0.1em;
+    color: #59c3be;
+    font-style: oblique;
+    text-shadow: 1px 2px 1px #48484c;
+    justify-self: center;
+    align-self: start;
+}
+
+.titleThird > h1 {
+    grid-column: 3/4;
+    margin: 0;
+    padding: 0;
+    font-size: medium;
+    font-weight: 800;
+    letter-spacing: 4px;
+    color: #e8e9e1;
+    text-shadow: 1px 2px 1px #48484c;
+    justify-self: end;
+    align-self: center;
+}
+
+.titleThird > h1:first-of-type {
+    text-indent: 2em;
+}
+
+video {
+    grid-column: 2/4;
+    justify-self: center;
+    align-self: center;
+    padding 1em;
+}
+
+
+/*---game setup page---*/
+
+#gameSetUp,
+#canvasSetUp {
+    background-color: #c54d57;
+    box-shadow: 2px 4px 10px #48484c
+}
+
+.headerInst,
+.headerCanvasSetup {
+    background-color: #f16a6c;
+    box-shadow: 2px 4px 10px #48484c;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+    padding: 1em 1em 0;
+}
+
+
+#instButton,
+#canvasButton {
+    color: #e8e9e1;
+}
+
+#canvasButton > h2,
+#instButton > h2 {
+    justify-self: end;
+    align-self: center;
+    padding: 0;
+    margin: 0;
+    text-align: right;
+    font-size: xx-large;
+    color: #e8e9e1;
+}
+
+#canvasButton > h2 {
+    padding-bottom: 0.5em;
+}
+
+/*hidden*/
+
+.hide {
+    display: none;
+    max-height: 0;
+}
+
+.show {
+    display: block;
+    height: auto;
+}
+
+.instructions {
+    background-color: #c54d57;
+    box-shadow: 1px 1px 3px #48484c;
+    height: ;
+    z-index: 1;
+    overflow-x: hidden;
+    -webkit-transition: all .25s ease;
+    -moz-transition: all .25s ease;
+    -ms-transition: all .25s ease;
+    -o-transition: all .25s ease;
+    transition: all .25s ease;
+    padding: 1em;
+    display: none;
+}
+
+.instWrapper {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.stepOne,
+.stepThree,
+.stepTwo,
+.stepFour {
+    padding: 1em;
+}
+
+.stepTwo,
+.stepFour {
+    align-content: center;
+}
+
+.stepOne,
+.stepTwo,
+.stepThree {
+    border-right: 2px solid #e8e9e1;
+}
+
+.stepOne > p,
+.stepThree > p {
+
+    padding: 0;
+    justify-self: end;
+    text-align: right;
+}
+
+.stepTwo > p,
+.stepFour > p {
+    grid-column: 1/3;
+    justify-self: end;
+    text-align: left;
+    align-self: center;
+}
+
+.stepOne > p:first-of-type,
+.stepThree > p:first-of-type {
+    text-align: right;
+    text-transform: uppercase;
+}
+
+.stepTwo > p:first-of-type,
+.stepFour > p:first-of-type {
+    text-align: left;
+    text-transform: uppercase;
+}
+
+.stepOne > p:nth-of-type(2n),
+.stepThree > p:nth-of-type(2n) {
+    font-size: x-small;
+    font-family: 'Montserrat', sans-serif;
+    text-align: left;
+
+
+}
+
+.stepTwo > p:nth-of-type(2n),
+.stepFour > p:nth-of-type(2n) {
+    text-align: right;
+    font-size: x-small;
+    font-family: 'Montserrat', sans-serif;
+}
+
+.stepOneIcon,
+.stepThreeIcon {
+    grid-row: 1/3;
+    animation: fadeIn;
+    animation-duration: 2400ms;
+    justify-self: center;
+}
+
+.stepTwoIcon,
+.stepFourIcon {
+    grid-column: 3/4;
+    align-self: end;
+    justify-self: center;
+}
+
+
+
+/*-----------canvas setup--------------------*/
+
+.canSetUpWrapper {
+    padding: 0;
+    margin: 0;
+    display: grid;
+    grid-template-columns: 1fr 2fr 3fr 2fr 1fr;
+    grid-template-rows: 2;
+    grid-template-areas: "caM . sPM . coM";
+    justify-content: center;
+
+}
+
+.canvasMenu {
+    grid-area: caM;
+
+}
+
+#canvasMenuButton {
+    align-self: end;
+}
+
+.canvasIcon,
+.colorIcon {
+    width: 9em;
+    align-self: end;
+
+}
+
+
+
+.sizePickerMenu {
+    grid-area: sPM;
+
+}
+
+/*form!*/
+
+#sizePicker {
+    display: grid;
+    grid grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-content: center;
+}
+
+.pickHeight {
+    grid-column: 1/2;
+    grid-row: 2;
+    padding-bottom: 1em;
+    justify-self: center;
+}
+
+.pickWidth {
+    grid-column: 2/3;
+    grid-row: 2;
+    padding-bottom: 1em;
+    justify-self: center;
+}
+
+#sizePicker > h2 {
+    grid-column: 1/3;
+    grid-row: 1/2;
+    text-align: center
+}
+
+
+input[type=number] {
+    background-color: #f16a6c;
+    color: #e8e9e1;
+    width: 3em;
+    height: 1em;
+    text-align: center;
+
+}
+
+input[type=number]::-webkit-outer-spin-button {
+    background-color: #e8e9e1;
+    color: #f16a6c;
+}
+
+#submitButton {
+    grid-column: 1/3;
+    grid-row: 3;
+    background-color: #59c3be;
+    box-shadow: 1px 1px 3px #48484c;
+    padding: 0.5em;
+    margin: 1em;
+
+}
+
+.colorMenu {
+    grid-area: coM;
+
+}
+
+/*---dropdown bars---*/
+
+#game {
+    z-index: 1;
+    display: grid;
+    grid-template-columns: 1fr 7fr 1fr;
+    grid-template-areas: "barL  cW  barR"
+}
+
+.barLeft {
+    grid-area: barL;
+}
+
+.barRight {
+    grid-area: barR;
+}
+
+
+.bar {
+    z-index: 1;
+    background-color: #59c3be;
+    box-shadow: 1px 1px 3px #48484c;
+}
+
+.hidden,
+.hiddenD,
+.hiddenE,
+.hiddenPC,
+.hiddenCC,
+.hiddenCS,
+.hiddenBkgC,
+.hiddenTL,
+.hiddenDel,
+.hiddenDown,
+.barHiddenL,
+.barHiddenR {
+    display: none;
+}
+
+.cellSize {
+    padding: 1em;
+}
+
+.square {
+    display: inline-flex;
+    border: 1px solid #fff;
+}
+
+.cellS {
+    grid-column: 1;
+    width: 10px;
+    height: 10px;
+}
+
+.cellM {
+    grid-column: 2;
+    width: 15px;
+    height: 15px;
+}
+
+.cellL {
+    width: 20px;
+    height: 20px;
+}
+
+
+.slot > button {
+    align-content: center;
+    padding: 1em;
+    padding-bottom: 0;
+    height: 4em;
+}
+
+.slotA {
+    border-bottom: 1px solid #e8e9e1;
+}
+
+.slotB {
+    border-bottom: 3px solid #e8e9e1;
+}
+
+.slot > button > i {
+    font-size: 3em;
+    color: #e8e9e1;
+    float: center;
+}
+
+
+
+.slot: hover {
+    cursor: pointer;
+}
+
+.cellSize:hover {
+    cursor: pointer;
+}
+
+.tooltip {
+    padding: 5px;
+    align-content: center;
+    text-align: center;
+}
+
+.tooltiptext {
+    font-family: 'Roboto', sans-serif;
+    font-size: xx-small;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #e8e9e1;
+
+}
+
+.canvasBkg {
+    background-color: transparent;
+}
+
+.hiddenLines {
+    border-color: transparent;
+}
+
+
+
+/*---the game page---*/
+
+#theGame {
+    grid-area: game;
+    background-color: #566270;
+
+}
+
+.canvasWrapper {
+    grid-area: cW;
+    justify-content: center;
+    padding: 2em;
+}
+
+.printableCanvas {
+    background-image: url("\images\easel-png.png");
+    z-index: 2;
+}
+
+#pixelCanvas {
+    border-collapse: collapse;
+    margin: 0 auto;
+    border: auto solid transparent;
+    background-color: #e8e9e1;
+}
+
+tr,
+td {
+    border: 1px solid #48484c;
+}
+
+
+
+tr {
+    height: 15px;
+}
+
+td {
+    width: 15px;
+}
+
+
+
+/*---footer---*/
+
+footer {}
+
+footer > p {
+    text-align: right;
+    font-size: x-small;
+    font-family: 'Montserrat', sans-serif;
+}
+
+/********/
+
+/*THE ᕕ( ᐛ )ᕗ END*/
+
+/********/
