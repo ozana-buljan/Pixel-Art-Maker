@@ -21,7 +21,7 @@
             <div class="headerWrapper">
                 <img class="logo" src="\images\logo svg.svg" href="logo">
                 <div></div>
-                <h2 class="appName">Pixel Art Maker</h2>
+                <h2 class="appName">Pixel<span>Art</span>Maker</h2>
             </div>
         </header>
 
@@ -79,11 +79,10 @@
         </div>
 
         <div id="canvasSetUp">
-
             <div class="headerCanvasSetup">
-                <button id="canvasButton" data-toggle="dropdown">
+                <button id="setUpButton" data-toggle="dropdown">
           <h2>Let's draw!</h2>
-                   
+            <i class="material-icons">&#xE313;</i>
           </button>
             </div>
 
@@ -91,12 +90,10 @@
                 <div class="canSetUpWrapper">
                     <div class="canvasMenu">
                         <button id="canvasMenuButton">
-          <img class="canvasIcon" src="\images\icon-canvas-png.png" href="canvas icon">
-          <i class="material-icons">&#xE313;</i>
-        </button>
+                              <img class="canvasIcon" src="\images\icon-canvas-png.png" href="canvas icon">
+                              <i class="material-icons">&#xE313;</i>
+                        </button>
                     </div>
-
-
                     <div class="sizePickerMenu">
                         <form id="sizePicker">
                             <h2>Set up your canvas</h2>
@@ -126,84 +123,33 @@
         <div id="game">
 
             <div class="barLeft bar barHiddenL">
-                <div class="slot slotA">
-                    <button id="drawButton">
-                    <i class="material-icons">brush</i>
-                             </button>
-                    <div class="tooltip hiddenD">
-                        <span class="tooltiptext">Draw</span>
-                    </div>
-                </div>
-                <div class="slot slotA">
-                    <button id="eraserButton">
-                        <i class="fa fa-eraser" aria-hidden="true"></i>
-                                        </button>
-                    <div class="tooltip hiddenE">
-                        <span class="tooltiptext">Erase</span>
-                    </div>
-                </div>
-                <div class="slot slotB">
-                    <button id="paintCanvas">
+                <button id="paintCanvas" title="Paint canvas" class="slot slotB">
                 <i class="material-icons">format_color_fill</i>
                 </button>
 
-                    <div class="tooltip  hiddenPC">
-                        <span class="tooltiptext">Paint canvas</span>
-                    </div>
-                </div>
-                <div class="cellSize slot slotA">
+                <div class="cellSize slot slotA" title="Pick cell size">
                     <span class="cellS square"></span>
                     <span class="cellM square"></span>
                     <span class="cellL square"></span>
-
-                    <div class="tooltip  hiddenCS">
-                        <span class="tooltiptext">Pick cell size</span>
-
-                    </div>
                 </div>
-                <div class="slot slotA ">
-                    <button id="clearButton">
+
+                <button id="clearButton" title="Delete drawing" class="slot slotA">
                     <i class="fa fa-window-close" aria-hidden="true"></i>
-                    </button>
-                    <div class="tooltip  hiddenBkgC">
-                        <span class="tooltiptext">Clear canvas</span>
-                    </div>
-                </div>
-
-                <div class="slot slotA">
-                    <button id="canvasBkgColor">
+                </button>
+                <button id="canvasBkgColor" title="White canvas ON/OFF" class="slot slotA">
                     <i class="material-icons">view_comfy</i>
                 </button>
-                    <div class="tooltip hiddenCC">
-                        <span class="tooltiptext">change <br> background color of your canvas</span>
-                    </div>
-                </div>
-                <div class="slot slotB">
-                    <button id="toggleLinesButton">
+                <button id="toggleLinesButton" title="Grid lines ON/OFF" class="slotB">
                     <i class="fa fa-hashtag" aria-hidden="true"></i>
-                    </button>
-                    <div class="tooltip  hiddenTL">
-                        <span class="tooltiptext">Grid lines ON/OFF</span>
-                    </div>
-                </div>
-                <div class="slot slotA ">
-                    <button id="deleteCanvasButton">
+                </button>
+
+                <button id="deleteCanvasButton" title="Delete canvas" class="slotA">
                     <i class="material-icons">delete</i>
-                                     </button>
-                    <div class="tooltip  hiddenDel">
-                        <span class="tooltiptext">Delete canvas</span>
+                </button>
 
-                    </div>
-                </div>
-
-                <div class="slot">
-                    <button id="downloadButton">
+                <button id="downloadButton" title="Save" class="slot">
                     <i class="material-icons">file_download</i>
-                                  </button>
-                    <div class="tooltip">
-                        <span class="tooltiptext  hiddenDown">Download</span>
-                    </div>
-                </div>
+              </button>
             </div>
 
             <div class="canvasWrapper">
@@ -213,19 +159,13 @@
             </div>
 
             <div class="barRight bar barHiddenR">
-                <div class="slot slotB">
-                    <h3>Pick A Color</h3>
-                    <input type="color" id="colorPicker">
-                </div>
-                <div class="slot slotB">
-                    <h3>Swatches</h3>
-                    <div class="swatches"></div>
-                </div>
-                <div class="slot swatch slotA"></div>
+                <h3>Pick A Color</h3>
+                <input type="color" id="colorPicker">
+                <h3 class="swatchesTitle">Swatches</h3>
+                <ul class="swatches"></ul>
             </div>
+
         </div>
-
-
 
 
 
@@ -234,10 +174,16 @@
             <p>Ozana Buljan</p>
             <p>Jan-2018</p>
         </footer>
+
     </div>
     <!--jQuery, HTML2Canvas, JS-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-    <script type="text/javascript" src="html2canvas-master/dist/html2canvas.js"></script>
+    <script type="text/javascript" language="javascript" src="js/jquery.js">
+    </script>
+    <script type="text/javascript" language="javascript" src="js/html2canvas.min.js">
+    </script>
+    <script type="text/javascript" language="javascript" src="js/jquery.plugin.html2canvas.js">
+    </script>
     <script src="designs.js"></script>
 </body>
 

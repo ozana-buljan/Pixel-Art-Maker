@@ -4,9 +4,20 @@
 
 /********/
 
+/*imported typeface*/
+
+@font-face {
+    font-family: Arcade;
+    src: url("ARCADE.TTF");
+}
+
 /*--general styling--*/
 
-html {}
+html {
+    width: 75%;
+    margin: auto;
+
+}
 
 body {
     margin: 0;
@@ -15,7 +26,7 @@ body {
 }
 
 h1 {
-    font-family: 'Quicksand', sans-serif;
+    font-family: 'Roboto', sans-serif;
     font-size: xx-large;
     font-weight: 200;
     letter-spacing: 4px;
@@ -24,22 +35,24 @@ h1 {
 }
 
 h2 {
-    font-family: 'Quicksand', sans-serif;
-    font-size: x-large;
+    font-family: "Arcade", sans-serif;
+    font-size: xx-large;
     font-weight: 200;
     letter-spacing: 4px;
     color: #c7dc65;
     text-shadow: 1px 2px 2px #48484c;
-    text-transform: lowercase;
+
 }
 
 h3 {
-    font-family: 'Roboto', sans-serif;
-    font-size: small;
+    font-family: "Arcade", sans-serif;
+    font-size: medium;
     letter-spacing: 1px;
     text-transform: uppercase;
     font-weight: 500;
     color: #e8e9e1;
+    text-shadow: 1px 2px 2px #48484c;
+    text-align: center
 }
 
 p,
@@ -64,6 +77,7 @@ i {
     font-size: xx-large;
     color: #e8e9e1;
 }
+
 
 /*---responsive grid layout---*/
 
@@ -117,14 +131,23 @@ header {
     grid-column: 1/2;
     justify-self: start;
     align-self: center;
+
 }
 
-.appName {
+.appName,
+.appName > span:first-of-type,
+.appName > span:nth-of-type(2n) {
+    font-family: "Arcade", sans-serif;
     grid-column: 3/4;
-    justify-self: end;
-    align-self: center;
-    font-size: xx-large;
-    margin: 1em;
+    text-align: right;
+    font-weight: 600;
+    text-transform: full-width;
+    font-size: 3em;
+}
+
+.appName > span:first-of-type {
+    font-size: 1.5em;
+    color: #566270;
 }
 
 
@@ -155,6 +178,7 @@ header {
 }
 
 .titleFirst > sub {
+    font-family: "Arcade", sans-serif;
     font-weight: 200;
     color: #59c3be;
     letter-spacing: 0px;
@@ -162,6 +186,7 @@ header {
 }
 
 .titleSecond {
+    font-family: "Arcade", sans-serif;
     grid-column: 1/2;
     grid-row: 2/3;
     font-size: 6em;
@@ -178,6 +203,7 @@ header {
 }
 
 .titleThird > h1 {
+
     grid-column: 3/4;
     margin: 0;
     padding: 0;
@@ -222,11 +248,11 @@ video {
 
 
 #instButton,
-#canvasButton {
+#setUpButton {
     color: #e8e9e1;
 }
 
-#canvasButton > h2,
+#setUpButton > h2,
 #instButton > h2 {
     justify-self: end;
     align-self: center;
@@ -235,10 +261,6 @@ video {
     text-align: right;
     font-size: xx-large;
     color: #e8e9e1;
-}
-
-#canvasButton > h2 {
-    padding-bottom: 0.5em;
 }
 
 /*hidden*/
@@ -309,12 +331,18 @@ video {
 
 .stepOne > p:first-of-type,
 .stepThree > p:first-of-type {
+    font-family: "Arcade", sans-serif;
+    font-size: medium;
+    font-weight: 600;
     text-align: right;
     text-transform: uppercase;
 }
 
 .stepTwo > p:first-of-type,
 .stepFour > p:first-of-type {
+    font-family: "Arcade", sans-serif;
+    font-size: medium;
+    font-weight: 600;
     text-align: left;
     text-transform: uppercase;
 }
@@ -367,7 +395,7 @@ video {
 
 .canvasMenu {
     grid-area: caM;
-
+    align-self: end;
 }
 
 #canvasMenuButton {
@@ -385,7 +413,7 @@ video {
 
 .sizePickerMenu {
     grid-area: sPM;
-
+    align-self: end;
 }
 
 /*form!*/
@@ -414,7 +442,13 @@ video {
 #sizePicker > h2 {
     grid-column: 1/3;
     grid-row: 1/2;
-    text-align: center
+    font-family: "Arcade", sans-serif;
+    font-size: x-large;
+    font-weight: 600;
+    text-align: center;
+    color: #59c3be;
+    font-style: normal;
+    margin-bottom: 0;
 }
 
 
@@ -422,14 +456,15 @@ input[type=number] {
     background-color: #f16a6c;
     color: #e8e9e1;
     width: 3em;
-    height: 1em;
+    height: 1.5em;
     text-align: center;
-
+    font-family: "Arcade", sans-serif;
 }
 
 input[type=number]::-webkit-outer-spin-button {
     background-color: #e8e9e1;
     color: #f16a6c;
+
 }
 
 #submitButton {
@@ -437,14 +472,17 @@ input[type=number]::-webkit-outer-spin-button {
     grid-row: 3;
     background-color: #59c3be;
     box-shadow: 1px 1px 3px #48484c;
-    padding: 0.5em;
+    height: 2em;
+    padding: 0.2em;
     margin: 1em;
-
+    font-family: "Arcade", sans-serif;
+    font-size: 1.5em;
+    color: #e8e9e1;
 }
 
 .colorMenu {
     grid-area: coM;
-
+    align-self: end;
 }
 
 /*---dropdown bars---*/
@@ -458,33 +496,82 @@ input[type=number]::-webkit-outer-spin-button {
 
 .barLeft {
     grid-area: barL;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
 }
 
 .barRight {
     grid-area: barR;
 }
 
+.barRight > h3 {
+    border-bottom: 1px solid #e8e9e1;
+    padding: 0.5em;
+    margin: 0
+}
+
+barRight > h3:nth-of-type(2n) {
+    border-top: 2px solid #e8e9e1;
+}
 
 .bar {
     z-index: 1;
-    background-color: #59c3be;
     box-shadow: 1px 1px 3px #48484c;
+    background-color: #59c3be;
+    height: 100%;
 }
 
-.hidden,
-.hiddenD,
-.hiddenE,
-.hiddenPC,
-.hiddenCC,
-.hiddenCS,
-.hiddenBkgC,
-.hiddenTL,
-.hiddenDel,
-.hiddenDown,
 .barHiddenL,
 .barHiddenR {
     display: none;
 }
+
+.barLeft > button {
+    display: block;
+    width: 100%;
+    height: 5em;
+    padding: 1em;
+}
+
+.slotA {
+    border-bottom: 1px solid #e8e9e1;
+}
+
+.slotB {
+    border-bottom: 3px solid #e8e9e1;
+}
+
+i {
+    font-size: 3em;
+    color: #e8e9e1;
+
+}
+
+.barLeft > button:hover > i,
+.square:hover {
+    cursor: pointer;
+    transform: scale(1.5);
+}
+
+/*tooltips*/
+
+.tooltip {
+    padding: 5px;
+    align-content: center;
+    text-align: center;
+}
+
+.tooltiptext {
+    font-family: 'Roboto', sans-serif;
+    font-size: xx-small;
+    text-transform: uppercase;
+    font-weight: 500;
+    color: #e8e9e1;
+
+}
+
+
+/*cell size button*/
 
 .cellSize {
     padding: 1em;
@@ -512,62 +599,71 @@ input[type=number]::-webkit-outer-spin-button {
     height: 20px;
 }
 
-
-.slot > button {
-    align-content: center;
-    padding: 1em;
-    padding-bottom: 0;
-    height: 4em;
-}
-
-.slotA {
-    border-bottom: 1px solid #e8e9e1;
-}
-
-.slotB {
-    border-bottom: 3px solid #e8e9e1;
-}
-
-.slot > button > i {
-    font-size: 3em;
-    color: #e8e9e1;
-    float: center;
-}
-
-
-
-.slot: hover {
-    cursor: pointer;
-}
-
 .cellSize:hover {
     cursor: pointer;
 }
 
-.tooltip {
-    padding: 5px;
-    align-content: center;
-    text-align: center;
-}
-
-.tooltiptext {
-    font-family: 'Roboto', sans-serif;
-    font-size: xx-small;
-    text-transform: uppercase;
-    font-weight: 500;
-    color: #e8e9e1;
-
-}
+/*canvas background button*/
 
 .canvasBkg {
-    background-color: transparent;
+    background-color: #e8e9e1;
 }
+
+/*toggle lines button*/
 
 .hiddenLines {
     border-color: transparent;
 }
 
 
+
+/*swatches*/
+
+#colorPicker {
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    padding: auto;
+    margin: auto;
+    -webkit-appearance: none;
+    background-image: none;
+    color: black;
+    outline: none;
+    border: none;
+    cursor: pointer;
+    height: 3em;
+    width: 3em;
+
+}
+
+.swatchesTitle {
+    border-top: 3px solid #e8e9e1;
+}
+
+.swatches {
+    display: flex;
+    flex-direction: column;
+    align-content: center;
+    justify-content: center;
+    padding: 0;
+    margin: 0;
+}
+
+.swatchColor {
+    list-style-type: none;
+    display: block;
+    height: 2em;
+    width: 100%;
+    padding: 0;
+    margin: 0;
+
+}
+
+.swatchColor:hover,
+#colorPicker:hover {
+    transform: scale(1.3);
+    cursor: url("\images\eyedropper-png.png"), pointer;
+}
 
 /*---the game page---*/
 
@@ -583,24 +679,17 @@ input[type=number]::-webkit-outer-spin-button {
     padding: 2em;
 }
 
-.printableCanvas {
-    background-image: url("\images\easel-png.png");
-    z-index: 2;
-}
-
 #pixelCanvas {
     border-collapse: collapse;
     margin: 0 auto;
     border: auto solid transparent;
-    background-color: #e8e9e1;
+
 }
 
 tr,
 td {
     border: 1px solid #48484c;
 }
-
-
 
 tr {
     height: 15px;
@@ -614,12 +703,21 @@ td {
 
 /*---footer---*/
 
-footer {}
+footer {
+
+    margin: 0;
+    padding: 1em;
+}
 
 footer > p {
     text-align: right;
-    font-size: x-small;
+    font-size: xx-small;
     font-family: 'Montserrat', sans-serif;
+    text-align: center;
+}
+
+footer > p:first-of-type {
+    border-top: 1px solid #e8e9e1;
 }
 
 /********/

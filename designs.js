@@ -2,9 +2,11 @@ $(document).ready(function () {
 
     /*VARIABLES*/
     const myCanvas = $("#pixelCanvas");
-    const colorPicker = $("#colorPicker");
     const cell = $("td");
-    let selectedColor = $("#colorPicker").val();
+    const colorPicker = $("#colorPicker");
+    const swatches = $(".swatches");
+    const swatchColor = ".swatchColor";
+    let selectedColor = "#000000";
     const submitButton = $("#submitButton");
     const clearCanvas = $("#clearButton");
     const deleteCanvas = $("#deleteCanvasButton");
@@ -39,21 +41,10 @@ $(document).ready(function () {
         }
     }
 
-    //function to fill cell with color
-    function draw() {
-        let selectedColor = $("#colorPicker").val();
-        $(cell).css("background-color", selectedColor);
-    }
-    //function to remove color from cell
-    function erase() {
-        let selectedColor = $("#colorPicker").val();
-        $(cell).css("background-color", "");
-    }
-
 
     /*EVENT LISTENERS*/
 
-    /*dropdown*/
+    /*toggle dropdowns*/
 
     //Toggle open/close dropdown button -> instructions
     instructions.on("click", function (e) {
@@ -72,60 +63,13 @@ $(document).ready(function () {
         e.preventDefault();
         $(".barHiddenR").stop().slideToggle(750);
     });
-    /*hover*/
-    //On hover show descriptions of the action bar buttons
-    //draw
-    $("#drawButton").hover(function (e) {
-        e.preventDefault();
-        $(".hiddenD").stop().slideToggle();
-    });
-    //erase
-    $("#eraserButton").hover(function (e) {
-        e.preventDefault();
-        $(".hiddenE").stop().slideToggle();
-    });
-    //paint canvas
-    bucket.hover(function (e) {
-        e.preventDefault();
-        $(".hiddenPC").stop().slideToggle();
-    });
-    //toggle background
-    $("#canvasBkgColor").hover(function (e) {
-        e.preventDefault();
-        $(".hiddenPC").stop().slideToggle();
-    });
-    //clearCanvas
-    clearCanvas.hover(function (e) {
-        e.preventDefault();
-        $(".hiddenCC").stop().slideToggle();
-    });
-    //pick cell size
-    $(".cellSize").hover(function (e) {
-        e.preventDefault();
-        $(".hiddenCS").stop().slideToggle();
-    });
 
-    //show/hide grid lines
-    hashtag.hover(function (e) {
+    //Open canvasMenu and colorMenu when clicked on setUp Button
+    $("#setUpButton").on("click", function (e) {
         e.preventDefault();
-        $(".hiddenTL").stop().slideToggle();
+        $(".barHiddenL").stop().slideToggle(750);
+        $(".barHiddenR").stop().slideToggle(750);
     });
-    //paint canvas
-    $("#paintCanvas").hover(function (e) {
-        e.preventDefault();
-        $(".hiddenPC").stop().slideToggle();
-    });
-    //delete canvas
-    deleteCanvas.hover(function (e) {
-        e.preventDefault();
-        $(".hiddenDel").stop().slideToggle();
-    });
-    //download
-    downloadBtn.hover(function (e) {
-        e.preventDefault();
-        $(".hiddenDown").stop().slideToggle();
-    });
-
 
 
     /*submit-> create canvas*/
@@ -136,7 +80,7 @@ $(document).ready(function () {
         makeGrid();
     });
 
-    /*left bar*/
+
     /*left bar*/
 
     /*-------------drawing options-------------------*/
@@ -178,7 +122,7 @@ $(document).ready(function () {
 
     //Event listener-> on click on table color button button -> toggle white/transparent
     canvasBkg.on("click", function () {
-        $("tr").removeAttr("style");
+        $("tr").toggleClass("canvasBkg");
     });
 
     //Event listener-> on click on clear button -> remove drawing 
@@ -197,39 +141,55 @@ $(document).ready(function () {
     });
 
     //Event listener-> on click save masterpiece!
-    /*  --not working yet ----
-     $("#downloadButton").on("click", function () {
-          var doc = new jsPDF();
-          var specialElementHandlers = {
-              '#editor': function (element, renderer) {
-                  return true;
-              }
-          };
+    //  --not  tested yet - apparently not working on a local server?----
 
-          $('#cmd').click(function () {
-              doc.fromHTML($('.printableCanvas').html(), 15, 15, {
-                  'width': 170,
-                  'elementHandlers': specialElementHandlers
-              });
-              doc.save('masterpiece.pdf');
-          });
-      });
-    */
+    $("#downloadButton").click(function () {
+        $("#pixelCanvas").html2canvas({
+            onrendered: function (canvas) {
+                let link = document.createElement('a');
+                link.download = "Masterpiece.png";
+                link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
+                link.click();
+            }
+        });
+    });
 
-    //Event listener-> on click save masterpiece!
-    /*
-                $("#downloadButton").click(function () {
-                    html2canvas(document.querySelector("#pixelCanvas")).then(canvas => {
 
-                        let link = document.createElement('a');
-                        link.download = "Masterpiece.png";
-                        link.href = canvas.toDataURL("image/png").replace("image/png", "image/octet-stream");
-                        link.click();
-                    });
-
-    */
     /*right bar*/
     //swatches
+
+    //create color palette
+    swatches.each(function (color) {
+        color = ['#00529a', '#433980', '#4c2468', '#af1f6a', '#be1e2d', '#ee3023', '#f37320', '#ffca2b', '#fbee35', '#add036', '#087b3e', '#fff', '#bbbdc0', '#000'];
+        let palette = '';
+        for (let i = 0; i < color.length; i++) {
+            palette += '<li class="swatchColor" title=" ' + color[i] + '" data-color="' + color[i] + '" style="background-color: ' + color[i] + ';"></li>';
+        }
+        $(this).append(palette);
+    });
+
+    //function to pick swatch
+    function pickSwatch(swatchColor, selectedColor) {
+        selectedColor = $(swatchColor).attr('data-color');
+        console.log("hex : " + selectedColor);
+        colorPicker.val(selectedColor);
+    }
+    //Event listener-> on click pick swatch
+    swatches.on('click', swatchColor, function () {
+        pickSwatch(this);
+    });
+    //show swatch as selected color in color Picker
+    colorPicker.val(selectedColor);
+
+    //function to fill cell with color
+    function draw(cell, color) {
+        color = colorPicker.val();
+        $(cell).css("background-color", color);
+    }
+    //function to remove color from cell
+    function erease(cell) {
+        $(cell).css("background-color", "");
+    }
 
     /*hidden features*/
     //Event listener-> fill the cell with the selected color
@@ -250,6 +210,7 @@ $(document).ready(function () {
         event.preventDefault();
         let selectedColor = $("#colorPicker").val();
         $(this).css("background-color", selectedColor);
+        $(this).css('cursor', 'url(\images\brush-png.png), auto');
         if (event.which == 3) {
             $(this).css("background-color", "");
         }
@@ -259,6 +220,7 @@ $(document).ready(function () {
         if (event.buttons == 1) {
             let selectedColor = $("#colorPicker").val();
             $(this).css("background-color", selectedColor);
+            $(this).css('cursor', 'url(\images\brush-png.png), auto');
         } else if (event.buttons == 2) {
             $(this).css("background-color", "");
             myCanvas.css
@@ -276,60 +238,7 @@ $(document).ready(function () {
     });
 
 
-}); //jQ closing 
+}); //jQ doc-ready closing 
 
 
-/*-------------Snippets: tryin' to make it work :E-----------------*/
-//Event listener-> on click on openInstructions -> show hidden bar
-/*
-    $("#openInstructions").on("click", function open() {
-        $(".instructions").css("grid-column", "1/3");
-        $(".instructions").css("height", "auto");
-        $(".instructions").css("display", "block");
-        $(".canvasSetUp").css("grid-column", "3/6");
-    });
-
-    //Event listener-> on click on closeInstructions -> hide bar
-    $("#closeInstructions").on("click", function close() {
-        $(".instructions").css("grid-column", "0");
-        $(".instructions").css("height", "0");
-        $(".instructions").css("display", "none");
-        $(".canvasSetUp").css("grid-column", "1/6");
-    });
-*/
-
-/* 
-    
-//dropdown functions -> toggle show/hide dropdown sections
-   
-     function toggleShowHide(){
-     if($(".dropdown").hasClass('show')=== false) {
-			 $(".dropdown").addClass("show");
-          $(".dropdown").removeClass("hide");
-			event.preventDefault();
-		}else{
-        $(".dropdown").addClass("hide");
-          $(".dropdown").removeClass("show");
-        }
-     }
-     */
-//DOWNLOAD---------------------------------------------------------
-/*
-    //Event listener-> on click save masterpiece!
-    $("#downloadButton").on("click", function () {
-        var doc = new jsPDF();
-        var specialElementHandlers = {
-            '#editor': function (element, renderer) {
-                return true;
-            }
-        };
-
-        $('#cmd').click(function () {
-            doc.fromHTML($('.printableCanvas').html(), 15, 15, {
-                'width': 170,
-                'elementHandlers': specialElementHandlers
-            });
-            doc.save('masterpiece.pdf');
-        });
-    });
-  */
+/*-------------THE ᕕ( ᐛ )ᕗ END-----------------*/
