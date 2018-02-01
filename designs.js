@@ -206,7 +206,7 @@ $(document).ready(function () {
     //Event listener-> stroke drawing with mousedown & mousemove combo 
 
 
-    $("#pixelCanvas").on("mousemove", "td", function (event) {
+    $("#pixelCanvas").on("mousedown", "td", function (event) {
         event.preventDefault();
         let selectedColor = $("#colorPicker").val();
         $(this).css("background-color", selectedColor);
